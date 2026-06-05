@@ -1,0 +1,49 @@
+close all; clear all;
+% Setup Matrix A and transpose it
+A = [1 5 6; 7 4 2; -3 6 7]
+A'
+
+% Define vectors x, y and z to construct Matrix B
+x = [8 6 9];
+y = [-5 8 1];
+z = [4 8 2];
+
+B = [x; y; z]
+B'
+
+% Matrix addition is commutative
+C = A + B
+D = B + A
+
+% Matrix subtraction
+A = C - B
+
+% Matrix multiplication
+A*B
+
+% Element-wise Matrix multiplication
+A.*B
+
+E = [1 4 3; 5 8 1];
+
+% A*E results in an error as n != m but E*A can be done as n == m 
+E*A
+
+% Calulcate inverse A and confirm by multiplying with A to get Identity
+% Matrix
+
+AI = inv(A)
+
+AI*A
+
+% Identity Matrix
+I = eye(3)
+
+% Permutation Matrix
+P = [0 0 1; 0 1 0; 1 0 0];
+
+% Swap rows of A
+PA = P*A
+
+% Swap columns of A
+PA = A*P
