@@ -1,0 +1,37 @@
+% Solving a tridiagonal system
+
+function x = Tridiag(e, f, g, r)
+
+    n = length(f);
+    e_len = length(e);
+
+    % Forward Elimination
+    for k = 2:e
+        factor = e(k) / f(k-1);
+        f(k) = f(k) - factor * g(k-1);
+        r(k) = r(k) - factor * r(k-1);
+    end
+
+    % Back Substitution
+    x(n) = r(n)/f(n);
+    for k = n-1:-1:1
+        x(k) = (r(k) - g(k) * x(k+1)) / f(k);
+    end
+end
+
+A = [2.04 -1 0 0; 
+    -1 2.04 -1 0; 
+    0 -1 2.04 -1; 
+    0 0 -1 2.04];
+
+b = [40.8; 0.8; 0.8; 200.8];
+
+diag_sub = diag(A, -1);
+diag_main = diag(A);
+diag_sup = diag(A, 1);
+
+x = Tridiag(diag_sub, diag_main, diag_sup, b);
+
+% Display the solution
+disp('The solution vector x is:');
+disp(x);
