@@ -1,13 +1,13 @@
-% Solving a tridiagonal system
+close all, clear all, clc;
 
+% Solving a tridiagonal system
 function x = Tridiag(e, f, g, r)
 
     n = length(f);
-    e_len = length(e);
 
     % Forward Elimination
-    for k = 2:e
-        factor = e(k) / f(k-1);
+    for k = 2:n
+        factor = e(k-1) / f(k-1);
         f(k) = f(k) - factor * g(k-1);
         r(k) = r(k) - factor * r(k-1);
     end

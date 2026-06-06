@@ -1,5 +1,6 @@
 close all, clear all, clc;
 
+
 % Solving a tridiagonal system
 function x = Tridiag(e, f, g, r)
 
